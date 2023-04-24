@@ -18,7 +18,6 @@ clear
 #"
 	echo -e  "##########################################################################################################################"
   
-dnf install -y bind-utils  >/dev/null 2>&1
 yum install -y bind-utils >/dev/null 2>&1
 
 v2ray='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/v2ray.sh)'
@@ -32,14 +31,12 @@ media='bash <(curl -L -s check.unlock.media)'
 while true
 do
 read  -p "$(echo -e "请选择
-echo -e  "##########################################################################################################################"
 ${Red_font_prefix}1${Font_color_suffix} v2ray （选择多）
 ${Red_font_prefix}2${Font_color_suffix} xray  （选择多）
 ${Red_font_prefix}3${Font_color_suffix} IO硬盘和网络速度测试
 ${Red_font_prefix}4${Font_color_suffix} 回程路由
 ${Red_font_prefix}5${Font_color_suffix} 回程路由(详细)
 ${Red_font_prefix}6${Font_color_suffix} 流媒体解锁测试
-echo -e "##########################################################################################################################"
 \r\n
 ")" choose
 	case $choose in
