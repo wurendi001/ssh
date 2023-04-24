@@ -1799,7 +1799,7 @@ menu() {
 #"
 	echo -e "#  QQ: 1150315739 
 #"
-"######################################################################"
+    echo "######################################################################"
     echo -e "  ${GREEN}1.${PLAIN}   安装Xray-VMESS"
     echo -e "  ${GREEN}2.${PLAIN}   安装Xray-${BLUE}VMESS+mKCP${PLAIN}"
     echo -e "  ${GREEN}3.${PLAIN}   安装Xray-VMESS+TCP+TLS"
