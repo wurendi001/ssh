@@ -18,11 +18,12 @@ clear
 #"
 	echo -e  "##########################################################################################################################"
   
-yum install -y bind-utils >/dev/null 2>&1
-
-v2ray='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/v2ray.sh)'
-xray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/xray_mod1.sh )'
-
+    yum install -y curl wget 2> /dev/null || apt install -y curl wget
+    yum update -y && yum install -y curl && yum install -y socat && yum install wget -y
+    apt update -y && apt install -y curl && apt install -y socat && apt install wget -y
+    
+v2ray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/v2ay_mod1.sh)'
+xray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/xray_mod1.sh)'
 IO='wget -qO- git.io/superbench.sh | bash'
 back_route='curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh'
 back_route_de='wget -qO- git.io/besttrace | bash'
