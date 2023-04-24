@@ -32,13 +32,14 @@ media='bash <(curl -L -s check.unlock.media)'
 while true
 do
 read  -p "$(echo -e "请选择
-
+${Red_font_prefix}0${Font_color_suffix} 退出脚本
 ${Red_font_prefix}1${Font_color_suffix} v2ray （选择多）
 ${Red_font_prefix}2${Font_color_suffix} xray  （选择多）
 ${Red_font_prefix}3${Font_color_suffix} IO硬盘和网络速度测试
 ${Red_font_prefix}4${Font_color_suffix} 回程路由
 ${Red_font_prefix}5${Font_color_suffix} 回程路由(详细)
 ${Red_font_prefix}6${Font_color_suffix} 流媒体解锁测试
+
 \r\n
 ")" choose
 	case $choose in
@@ -49,7 +50,8 @@ ${Red_font_prefix}6${Font_color_suffix} 流媒体解锁测试
 		5) eval $back_route_de ;;
 		6) eval $media ;;
 		*) echo "wrong input" ;;
-	esac
+		0) exit 1 ;;
+		esac
 
 done
 exit
