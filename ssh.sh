@@ -22,7 +22,7 @@ clear
     yum update -y && yum install -y curl && yum install -y socat && yum install wget -y
     apt update -y && apt install -y curl && apt install -y socat && apt install wget -y
     
-v2ray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/v2ay_mod1.sh)'
+v2ray='bash <(curl -fsSL https://raw.githubusercontent.com/wurendi001/ssh/main/v2ray_mod1.sh)'
 xray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/xray_mod1.sh)'
 IO='wget -qO- git.io/superbench.sh | bash'
 back_route='curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh'
