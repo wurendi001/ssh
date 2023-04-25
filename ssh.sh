@@ -2,7 +2,9 @@
 Red_font_prefix="\033[31m"
 Font_color_suffix="\033[0m"
     yum install -y curl wget 2> /dev/null || apt install -y curl wget
-clear     
+    yum update -y && yum install -y curl && yum install -y socat && yum install wget -y
+    apt update -y && apt install -y curl && apt install -y socat && apt install wget -y
+    clear     
 	echo -e "########################################################################################################################"
 	echo -e "#                     一键安装脚本${PLAIN}
 #"
@@ -17,7 +19,7 @@ clear
 	echo -e "#  QQ: 1150315739 
 #"
 	echo -e  "##########################################################################################################################"
-    
+	echo	
 v2ray='bash <(curl -fsSL https://raw.githubusercontent.com/wurendi001/ssh/main/v2ray_mod1.sh)'
 xray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/xray_mod1.sh)'
 IO='wget -qO- git.io/superbench.sh | bash'
