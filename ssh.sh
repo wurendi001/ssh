@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 Red_font_prefix="\033[31m"
 Font_color_suffix="\033[0m"
-
+    yum install -y curl wget 2> /dev/null || apt install -y curl wget
 clear     
 	echo -e "########################################################################################################################"
 	echo -e "#                     一键安装脚本${PLAIN}
@@ -17,8 +17,6 @@ clear
 	echo -e "#  QQ: 1150315739 
 #"
 	echo -e  "##########################################################################################################################"
-  
-    yum install -y curl wget 2> /dev/null || apt install -y curl wget
     
 v2ray='bash <(curl -fsSL https://raw.githubusercontent.com/wurendi001/ssh/main/v2ray_mod1.sh)'
 xray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/xray_mod1.sh)'
@@ -26,7 +24,6 @@ IO='wget -qO- git.io/superbench.sh | bash'
 back_route='curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh'
 back_route_de='wget -qO- git.io/besttrace | bash'
 media='bash <(curl -L -s check.unlock.media)'
-
 while true
 do
 read  -p "$(echo -e "请选择
