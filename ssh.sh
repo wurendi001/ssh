@@ -5,20 +5,14 @@ Font_color_suffix="\033[0m"
     yum update -y && yum install -y curl && yum install -y socat && yum install wget -y
     apt update -y && apt install -y curl && apt install -y socat && apt install wget -y
     clear     
-	echo -e "########################################################################################################################"
-	echo -e "#                     一键安装脚本${PLAIN}
-#"
-	echo -e "# 作者: 失落的梦                          
-#"
-	echo -e "# 导航站:https://www.meng666.buzz 
-#"
-	echo -e "# 博客:https://www.kehu33.asia
-#"
-	echo -e "# 微信: Falltoher-1314
-#"
-	echo -e "#  QQ: 1150315739 
-#"
-	echo -e  "##########################################################################################################################"
+	echo -e "###########################################################################"
+	echo -e "#                     一键安装脚本"
+	echo -e "# 作者: 失落的梦                          "
+	echo -e "# 导航站:https://www.meng666.buzz "
+	echo -e "# 博客:https://www.kehu33.asia"
+	echo -e "# 微信: Falltoher-1314 "
+	echo -e "#  QQ: 1150315739     "
+	echo -e  "###########################################################################"
 	echo	
 v2ray='bash <(curl -fsSL https://raw.githubusercontent.com/wurendi001/ssh/main/v2ray_mod1.sh)'
 xray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/xray_mod1.sh)'
@@ -28,7 +22,7 @@ back_route_de='wget -qO- git.io/besttrace | bash'
 media='bash <(curl -L -s check.unlock.media)'
 while true
 do
-read  -p "$(echo -e "请选择
+read  -p "$(echo -e "请选择⬇️
 
 ${Red_font_prefix}1${Font_color_suffix} v2ray （选择多）
 ${Red_font_prefix}2${Font_color_suffix} xray  （选择多）
