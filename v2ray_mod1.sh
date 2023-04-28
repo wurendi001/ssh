@@ -161,10 +161,10 @@ normalizeVersion() {
     if [ -n "$1" ]; then
         case "$1" in
             v*)
-                echo "$1"
+                echo "v4.32.1"
             ;;
             *)
-                echo "v$1"
+                echo "v4.32.1"
             ;;
         esac
     else
