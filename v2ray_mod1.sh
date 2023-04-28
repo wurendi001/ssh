@@ -1768,7 +1768,7 @@ menu() {
 #"
     echo "#############################################################"
     echo
-    echo -e " XTLS协议已去除跟新 4.32.1版本以上的不支持XTLS协议的了需要去用xray脚本"
+    echo -e " ${RED}XTLS协议已去除跟新 4.32.1版本以上的不支持XTLS协议的了需要去用xray脚本"
     echo
     echo -e "  ${GREEN}1.${PLAIN}   安装V2ray-VMESS"
     echo -e "  ${GREEN}2.${PLAIN}   安装V2ray-${BLUE}VMESS+mKCP${PLAIN}"
