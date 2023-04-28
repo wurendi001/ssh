@@ -1,6 +1,6 @@
 #!/bin/bash
 # xray一键安装脚本
-# Author: hijk<https://hijk.art>
+# Author: 失落的梦<https://www.kehu33.asia>
 
 
 RED="\033[31m"      # Error message
