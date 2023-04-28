@@ -1,6 +1,6 @@
 #!/bin/bash
 # v2ray一键安装脚本
-# Author: hijk<https://hijk.art>
+# Author: 失落的梦<https://www.kehu33.asia>
 
 
 RED="\033[31m"      # Error message
@@ -12,22 +12,8 @@ PLAIN='\033[0m'
 # 以下网站是随机从Google上找到的无广告小说网站，不喜欢请改成其他网址，以http或https开头
 # 搭建好后无法打开伪装域名，可能是反代小说网站挂了，请在网站留言，或者Github发issue，以便替换新的网站
 SITES=(
-http://www.zhuizishu.com/
-http://xs.56dyc.com/
-#http://www.xiaoshuosk.com/
-#https://www.quledu.net/
-http://www.ddxsku.com/
-http://www.biqu6.com/
-https://www.wenshulou.cc/
-#http://www.auutea.com/
-http://www.55shuba.com/
-http://www.39shubao.com/
-https://www.23xsw.cc/
-https://www.huanbige.com/
-https://www.jueshitangmen.info/
-https://www.zhetian.org/
-http://www.bequgexs.com/
-http://www.tjwl.com/
+https://www.meng666.buzz/
+https://www.kehu33.asia/
 )
 
 CONFIG_FILE="/etc/v2ray/config.json"
@@ -161,10 +147,10 @@ normalizeVersion() {
     if [ -n "$1" ]; then
         case "$1" in
             v*)
-                echo "v4.32.1"
+                echo "v5.2.1"
             ;;
             *)
-                echo "v4.32.1"
+                echo "v5.2.1"
             ;;
         esac
     else
@@ -179,8 +165,8 @@ getVersion() {
     CUR_VER="$(normalizeVersion "$(echo "$VER" | head -n 1 | cut -d " " -f2)")"
     TAG_URL="${V6_PROXY}https://api.github.com/repos/v2fly/v2ray-core/releases/latest"
     NEW_VER="$(normalizeVersion "$(curl -s "${TAG_URL}" --connect-timeout 10| tr ',' '\n' | grep 'tag_name' | cut -d\" -f4)")"
-    if [[ "$XTLS" = "true" ]]; then
-        NEW_VER=v4.32.1
+    if [[ $NEW_VER = "" ]]; then
+        NEW_VER=v5.2.1
     fi
 
     if [[ $? -ne 0 ]] || [[ $NEW_VER == "" ]]; then
@@ -242,28 +228,17 @@ archAffix(){
 }
 
 getData() {
-    if [[ "$TLS" = "true" || "$XTLS" = "true" ]]; then
+    if [[ "$TLS" = "true" ]]; then
         echo ""
         echo " V2ray一键脚本，运行之前请确认如下条件已经具备："
         colorEcho ${YELLOW} "  1. 一个伪装域名"
         colorEcho ${YELLOW} "  2. 伪装域名DNS解析指向当前服务器ip（${IP}）"
         colorEcho ${BLUE} "  3. 如果/root目录下有 v2ray.pem 和 v2ray.key 证书密钥文件，无需理会条件2"
         echo " "
-        read -p " 确认满足按y，按其他退出脚本：" answer
-        if [[ "${answer,,}" != "y" ]]; then
-            exit 0
-        fi
-
-        echo ""
-        while true
-        do
             read -p " 请输入伪装域名：" DOMAIN
             if [[ -z "${DOMAIN}" ]]; then
                 colorEcho ${RED} " 域名输入错误，请重新输入！"
-            else
-                break
             fi
-        done
         DOMAIN=${DOMAIN,,}
         colorEcho ${BLUE}  " 伪装域名(host)：$DOMAIN"
 
@@ -395,11 +370,11 @@ getData() {
         echo ""
         colorEcho $BLUE " 请选择伪装站类型:"
         echo "   1) 静态网站(位于/usr/share/nginx/html)"
-        echo "   2) 小说站(随机选择)"
-        echo "   3) 美女站(https://imeizi.me)"
-        echo "   4) 高清壁纸站(https://bing.imeizi.me)"
-        echo "   5) 自定义反代站点(需以http或者https开头)"
-        read -p "  请选择伪装网站类型[默认:高清壁纸站]" answer
+        echo "   2) 网站(随机选择)"
+       #echo "   3) 美女站(https://imeizi.me)"
+       #echo "   4) 高清壁纸站(https://bing.imeizi.me)"
+        echo "   3) 自定义反代站点(需以http或者https开头)"
+        read -p "  请选择伪装网站类型[默认失效了:高清壁纸站]" answer
         if [[ -z "$answer" ]]; then
             PROXY_URL="https://bing.imeizi.me"
         else
@@ -423,13 +398,13 @@ getData() {
                     fi
                 done
                 ;;
+           # 3)
+              #  PROXY_URL="https://imeizi.me"
+             #   ;;
+           # 4)
+            #   PROXY_URL="https://bing.imeizi.me"
+             #   ;;
             3)
-                PROXY_URL="https://imeizi.me"
-                ;;
-            4)
-                PROXY_URL="https://bing.imeizi.me"
-                ;;
-            5)
                 read -p " 请输入反代站点(以http或者https开头)：" PROXY_URL
                 if [[ -z "$PROXY_URL" ]]; then
                     colorEcho $RED " 请输入反代网站！"
@@ -640,7 +615,7 @@ EOF
         sub_filter_once off;"
     fi
 
-    if [[ "$TLS" = "true" || "$XTLS" = "true" ]]; then
+    if [[ "$TLS" = "true" ]]; then
         mkdir -p $NGINX_CONF_PATH
         # VMESS+WS+TLS
         # VLESS+WS+TLS
@@ -829,8 +804,8 @@ installV2ray() {
     mkdir -p '/etc/v2ray' '/var/log/v2ray' && \
     unzip /tmp/v2ray/v2ray.zip -d /tmp/v2ray
     mkdir -p /usr/bin/v2ray
-    cp /tmp/v2ray/v2ctl /usr/bin/v2ray/; cp /tmp/v2ray/v2ray /usr/bin/v2ray/; cp /tmp/v2ray/geo* /usr/bin/v2ray/;
-    chmod +x '/usr/bin/v2ray/v2ray' '/usr/bin/v2ray/v2ctl' || {
+    cp /tmp/v2ray/v2ray /usr/bin/v2ray/; cp /tmp/v2ray/v2ray /usr/bin/v2ray/; cp /tmp/v2ray/geo* /usr/bin/v2ray/;
+    chmod +x '/usr/bin/v2ray/v2ray' '/usr/bin/v2ray/v2ray' || {
         colorEcho $RED " V2ray安装失败"
         exit 1
     }
@@ -1792,7 +1767,9 @@ menu() {
 	echo -e "#  QQ: 1150315739 
 #"
     echo "#############################################################"
-
+    echo
+    echo -e " XTLS协议已去除跟新 4.32.1版本以上的不支持XTLS协议的了需要去用xray脚本"
+    echo
     echo -e "  ${GREEN}1.${PLAIN}   安装V2ray-VMESS"
     echo -e "  ${GREEN}2.${PLAIN}   安装V2ray-${BLUE}VMESS+mKCP${PLAIN}"
     echo -e "  ${GREEN}3.${PLAIN}   安装V2ray-VMESS+TCP+TLS"
@@ -1800,9 +1777,7 @@ menu() {
     echo -e "  ${GREEN}5.${PLAIN}   安装V2ray-${BLUE}VLESS+mKCP${PLAIN}"
     echo -e "  ${GREEN}6.${PLAIN}   安装V2ray-VLESS+TCP+TLS"
     echo -e "  ${GREEN}7.${PLAIN}   安装V2ray-${BLUE}VLESS+WS+TLS${PLAIN}${RED}(可过cdn)${PLAIN}"
-    echo -e "  ${GREEN}8.${PLAIN}   安装V2ray-${BLUE}VLESS+TCP+XTLS${PLAIN}${RED}(推荐)${PLAIN}"
     echo -e "  ${GREEN}9.${PLAIN}   安装${BLUE}trojan${PLAIN}${RED}(推荐)${PLAIN}"
-    echo -e "  ${GREEN}10.${PLAIN}  安装${BLUE}trojan+XTLS${PLAIN}${RED}(推荐)${PLAIN}"
     echo " -------------"
     echo -e "  ${GREEN}11.${PLAIN}  更新V2ray"
     echo -e "  ${GREEN}12.  ${RED}卸载V2ray${PLAIN}"
@@ -1856,21 +1831,9 @@ menu() {
             WS="true"
             install
             ;;
-        8)
-            VLESS="true"
-            TLS="true"
-            XTLS="true"
-            install
-            ;;
         9)
             TROJAN="true"
             TLS="true"
-            install
-            ;;
-        10)
-            TROJAN="true"
-            TLS="true"
-            XTLS="true"
             install
             ;;
         11)
