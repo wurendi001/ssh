@@ -160,13 +160,13 @@ normalizeVersion() {
     if [ -n "$1" ]; then
         case "$1" in
             v*)
-                echo "v1.4.2"
+                echo "v1.5.3"
             ;;
             http*)
-                echo "v1.4.2"
+                echo "v1.5.3"
             ;;
             *)
-                echo "v1.4.2"
+                echo "v1.5.3"
             ;;
         esac
     else
