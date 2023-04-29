@@ -14,6 +14,10 @@ PLAIN='\033[0m'
 SITES=(
 https://www.meng666.buzz/
 https://www.kehu33.asia/
+https://www.jueshitangmen.info/
+https://www.zhetian.org/
+http://www.bequgexs.com/
+http://www.tjwl.com/
 )
 
 CONFIG_FILE="/usr/local/etc/xray/config.json"
