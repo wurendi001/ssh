@@ -2,7 +2,6 @@
 # xray一键安装脚本
 # Author: 失落的梦<https://www.kehu33.asia>
 
-
 RED="\033[31m"      # Error message
 GREEN="\033[32m"    # Success message
 YELLOW="\033[33m"   # Warning message
@@ -18,6 +17,7 @@ https://www.jueshitangmen.info/
 https://www.zhetian.org/
 http://www.bequgexs.com/
 http://www.tjwl.com/
+
 )
 
 CONFIG_FILE="/usr/local/etc/xray/config.json"
