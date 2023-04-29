@@ -3,7 +3,6 @@ Red_font_prefix="\033[31m"
 Font_color_suffix="\033[0m"
 
 clear     
-    yum install -y curl wget 2> /dev/null || apt install -y curl wget
     yum update -y && yum install -y curl && yum install -y socat && yum install wget -y
     apt update -y && apt install -y curl && apt install -y socat && apt install wget -y
     
