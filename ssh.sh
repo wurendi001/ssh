@@ -1,11 +1,13 @@
 #!/usr/bin/bash
 Red_font_prefix="\033[31m"
 Font_color_suffix="\033[0m"
+
+clear     
     yum install -y curl wget 2> /dev/null || apt install -y curl wget
     yum update -y && yum install -y curl && yum install -y socat && yum install wget -y
     apt update -y && apt install -y curl && apt install -y socat && apt install wget -y
-    clear     
-	echo -e "###########################################################################"
+    
+        echo -e "###########################################################################"
 	echo -e "#                     一键安装脚本"
 	echo -e "# 作者: 失落的梦                          "
 	echo -e "# 导航站:https://www.meng666.buzz "
@@ -32,6 +34,7 @@ ${Red_font_prefix}3${Font_color_suffix} IO硬盘和网络速度测试
 ${Red_font_prefix}4${Font_color_suffix} 回程路由
 ${Red_font_prefix}5${Font_color_suffix} 回程路由(详细)
 ${Red_font_prefix}6${Font_color_suffix} 流媒体解锁测试
+
 \r\n
 ")" choose
 	case $choose in
