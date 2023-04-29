@@ -32,7 +32,6 @@ ${Red_font_prefix}3${Font_color_suffix} IO硬盘和网络速度测试
 ${Red_font_prefix}4${Font_color_suffix} 回程路由
 ${Red_font_prefix}5${Font_color_suffix} 回程路由(详细)
 ${Red_font_prefix}6${Font_color_suffix} 流媒体解锁测试
-
 \r\n
 ")" choose
 	case $choose in
