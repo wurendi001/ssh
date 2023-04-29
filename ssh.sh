@@ -14,6 +14,7 @@ Font_color_suffix="\033[0m"
 	echo -e "#  QQ: 1150315739     "
 	echo -e  "###########################################################################"
 	echo	
+bbr='bash <(curl -fsSL https://raw.githubusercontent.com/wurendi001/ssh/main/tcp2.sh)'
 v2ray='bash <(curl -fsSL https://raw.githubusercontent.com/wurendi001/ssh/main/v2ray_mod1.sh)'
 xray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/xray_mod1.sh)'
 IO='wget -qO- git.io/superbench.sh | bash'
@@ -24,6 +25,7 @@ while true
 do
 read  -p "$(echo -e "请选择⬇
 
+${Red_font_prefix}0${Font_color_suffix} bbr加速
 ${Red_font_prefix}1${Font_color_suffix} v2ray （选择多）
 ${Red_font_prefix}2${Font_color_suffix} xray  （选择多）
 ${Red_font_prefix}3${Font_color_suffix} IO硬盘和网络速度测试
@@ -34,6 +36,7 @@ ${Red_font_prefix}6${Font_color_suffix} 流媒体解锁测试
 \r\n
 ")" choose
 	case $choose in
+		0) eval $bbr ;;
 		1) eval $v2ray ;;
 		2) eval $xray ;;
 		3) eval $IO ;;
