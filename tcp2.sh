@@ -1063,42 +1063,6 @@ optimizing_ddcc() {
   sysctl --system
 }
 
-#更新脚本
-Update_Shell() {
-  echo -e "当前版本为 [ ${sh_ver} ]，开始检测最新版本..."
-  sh_new_ver=$(wget -qO- "https://gitlab.com/shell00/sldm/-/raw/main/tcp2.sh" | grep 'sh_ver="' | awk -F "=" '{print $NF}' | sed 's/\"//g' | head -1)
-  [[ -z ${sh_new_ver} ]] && echo -e "${Error} 检测最新版本失败 !" && start_menu
-  if [ ${sh_new_ver} != ${sh_ver} ]; then
-    echo -e "发现新版本[ ${sh_new_ver} ]，是否更新？[Y/n]"
-    read -p "(默认: y):" yn
-    [[ -z "${yn}" ]] && yn="y"
-    if [[ ${yn} == [Yy] ]]; then
-      wget -N "https://${gitlab}/tcp2.sh" && chmod +x tcp2.sh && ./tcp2.sh
-      echo -e "脚本已更新为最新版本[ ${sh_new_ver} ] !"
-    else
-      echo && echo "	已取消..." && echo
-    fi
-  else
-    echo -e "当前已是最新版本[ ${sh_new_ver} ] !"
-    sleep 2s && ./tcp2.sh
-  fi
-}
-
-#切换到不卸载内核版本
-gototcpx() {
-  clear
-  bash <(curl -s -L https://xzdfs96.fit/tcp3.sh)
-}
-
-#切换到一键DD安装系统脚本 新手勿入
-gotodd() {
-  clear
-  echo DD使用git.beta.gs的脚本，知悉
-  sleep 1.5
-  wget -O NewReinstall.sh https://github.com/fcurrk/reinstall/raw/master/NewReinstall.sh && chmod a+x NewReinstall.sh && bash NewReinstall.sh
-  #wget -qO ~/Network-Reinstall-System-Modify.sh 'https://github.com/ylx2016/reinstall/raw/master/Network-Reinstall-System-Modify.sh' && chmod a+x ~/Network-Reinstall-System-Modify.sh && bash ~/Network-Reinstall-System-Modify.sh -UI_Options
-}
-
 #禁用IPv6
 closeipv6() {
   clear
@@ -1141,7 +1105,6 @@ net.ipv6.conf.default.accept_ra = 2" >>/etc/sysctl.d/99-sysctl.conf
 start_menu() {
   clear
   echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}  母鸡慎用
- ${Green_font_prefix}9.${Font_color_suffix} 切换到不卸载内核版本	${Green_font_prefix}10.${Font_color_suffix} 切换到一键DD系统脚本
  ${Green_font_prefix}1.${Font_color_suffix} 安装 BBR原版内核
  ${Green_font_prefix}2.${Font_color_suffix} 安装 BBRplus版内核		${Green_font_prefix}5.${Font_color_suffix} 安装 BBRplus新版内核
  ${Green_font_prefix}3.${Font_color_suffix} 安装 Lotserver(锐速)内核	${Green_font_prefix}6.${Font_color_suffix} 安装 xanmod版内核
