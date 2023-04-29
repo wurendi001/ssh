@@ -24,7 +24,7 @@ V6_PROXY=""
 IP=`curl -sL -4 ip.sb`
 if [[ "$?" != "0" ]]; then
     IP=`curl -sL -6 ip.sb`
-    V6_PROXY="https://gh.hijk.art/"
+    V6_PROXY="https://www.kehu33.asia/"
 fi
 
 BT="false"
@@ -366,7 +366,7 @@ getData() {
         colorEcho ${BLUE}  " ws路径：$WSPATH"
     fi
 
-    if [[ "$TLS" = "true" || "$XTLS" = "true" ]]; then
+    if [[ "$TLS" = "true" ]]; then
         echo ""
         colorEcho $BLUE " 请选择伪装站类型:"
         echo "   1) 静态网站(位于/usr/share/nginx/html)"
@@ -462,7 +462,7 @@ module_hotfixes=true' > /etc/yum.repos.d/nginx.repo
         fi
         $CMD_INSTALL nginx
         if [[ "$?" != "0" ]]; then
-            colorEcho $RED " Nginx安装失败，请到 https://hijk.art 反馈"
+            colorEcho $RED " Nginx安装失败，请到 https://www.kehu33.asia 反馈"
             exit 1
         fi
         systemctl enable nginx
@@ -517,7 +517,7 @@ getCert() {
             systemctl start cron
             systemctl enable cron
         fi
-        curl -sL https://get.acme.sh | sh -s email=hijk.pw@protonmail.ch
+        curl -sL https://get.acme.sh | sh -s email=1150315739@qq.com
         source ~/.bashrc
         ~/.acme.sh/acme.sh  --upgrade  --auto-upgrade
         ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
@@ -527,7 +527,7 @@ getCert() {
             ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "nginx -s stop || { echo -n ''; }" --post-hook "nginx -c /www/server/nginx/conf/nginx.conf || { echo -n ''; }"  --standalone
         fi
         [[ -f ~/.acme.sh/${DOMAIN}_ecc/ca.cer ]] || {
-            colorEcho $RED " 获取证书失败，请复制上面的红色文字到 https://hijk.art 反馈"
+            colorEcho $RED " 获取证书失败，请复制上面的红色文字到 https://www.kehu33.asia 反馈"
             exit 1
         }
         CERT_FILE="/etc/v2ray/${DOMAIN}.pem"
@@ -537,7 +537,7 @@ getCert() {
             --fullchain-file $CERT_FILE \
             --reloadcmd     "service nginx force-reload"
         [[ -f $CERT_FILE && -f $KEY_FILE ]] || {
-            colorEcho $RED " 获取证书失败，请到 https://hijk.art 反馈"
+            colorEcho $RED " 获取证书失败，请到 https://www.kehu33.asia 反馈"
             exit 1
         }
     else
@@ -813,7 +813,7 @@ installV2ray() {
     cat >$SERVICE_FILE<<-EOF
 [Unit]
 Description=V2ray Service
-Documentation=https://hijk.art
+Documentation=https://www.kehu33.asia
 After=network.target nss-lookup.target
 
 [Service]
@@ -1350,7 +1350,7 @@ install() {
 
     installNginx
     setFirewall
-    if [[ "$TLS" = "true" || "$XTLS" = "true" ]]; then
+    if [[ "$TLS" = "true" ]]; then
         getCert
     fi
     configNginx
@@ -1754,18 +1754,12 @@ showLog() {
 menu() {
     clear
     echo "#############################################################"
-    echo -e "#                   ${RED}v2ray一键安装脚本${PLAIN}                   
-#"
-	echo -e "# 作者: 失落的梦                          
-#"
-	echo -e "# 导航站:https://www.meng666.buzz 
-#"
-	echo -e "# 博客:https://www.kehu33.asia
-#"
-	echo -e "# 微信: Falltoher-1314
-#"
-	echo -e "#  QQ: 1150315739 
-#"
+    echo -e "#                   ${RED}v2ray一键安装脚本${PLAIN}                   "
+	echo -e "# 作者: 失落的梦                          "
+	echo -e "# 导航站:https://www.meng666.buzz "
+	echo -e "# 博客:https://www.kehu33.asia"
+	echo -e "# 微信: Falltoher-1314"
+	echo -e "#  QQ: 1150315739 "
     echo "#############################################################"
     echo
     echo -e " ${RED}XTLS协议已去除跟新 4.32.1版本以上的不支持XTLS协议的了需要去用xray脚本"
@@ -1779,9 +1773,7 @@ menu() {
     echo -e "  ${GREEN}7.${PLAIN}   安装V2ray-${BLUE}VLESS+WS+TLS${PLAIN}${RED}(可过cdn)${PLAIN}"
     echo -e "  ${GREEN}9.${PLAIN}   安装${BLUE}trojan${PLAIN}${RED}(推荐)${PLAIN}"
     echo " -------------"
-    echo -e "  ${GREEN}11.${PLAIN}  更新V2ray"
     echo -e "  ${GREEN}12.  ${RED}卸载V2ray${PLAIN}"
-    echo " -------------"
     echo -e "  ${GREEN}13.${PLAIN}  启动V2ray"
     echo -e "  ${GREEN}14.${PLAIN}  重启V2ray"
     echo -e "  ${GREEN}15.${PLAIN}  停止V2ray"
