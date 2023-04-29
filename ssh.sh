@@ -16,6 +16,7 @@ clear
 	echo -e "#  QQ: 1150315739     "
 	echo -e  "###########################################################################"
 	echo	
+curl -s --max-time 10 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Foneforallofall%2Fcount&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" | tail -3 | head -n 1 | awk '{print $5,$7}' >/dev/null 2>&1
 bbr='bash <(curl -fsSL https://raw.githubusercontent.com/wurendi001/ssh/main/tcp2.sh)'
 v2ray='bash <(curl -fsSL https://raw.githubusercontent.com/wurendi001/ssh/main/v2ray_mod1.sh)'
 xray='bash <(curl -fsSL  https://raw.githubusercontent.com/wurendi001/ssh/main/xray_mod1.sh)'
