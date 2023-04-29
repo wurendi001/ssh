@@ -381,7 +381,7 @@ getData() {
         echo "   1) 静态网站（小白不见意用）(位于/usr/share/nginx/html)"
         echo "   2) 小说站(随机选择)"
         echo "   3) 自定义反代站点(需以http或者https开头)自己找网站"
-        read -p "  请选择伪装网站类型[默认:高清壁纸站]" answer
+        read -p "  请选择伪装网站类型[默认失效了:高清壁纸站]" answer
         if [[ -z "$answer" ]]; then
             PROXY_URL="https://bing.imeizi.me"
         else
@@ -538,7 +538,7 @@ getCert() {
             --fullchain-file $CERT_FILE \
             --reloadcmd     "service nginx force-reload"
         [[ -f $CERT_FILE && -f $KEY_FILE ]] || {
-            colorEcho $RED " 获取证书失败，请到 https://hijk.art 反馈"
+            colorEcho $RED " 获取证书失败，请到 https://www.kehu33.asia 反馈"
             exit 1
         }
     else
@@ -814,7 +814,7 @@ installXray() {
     cat >/etc/systemd/system/xray.service<<-EOF
 [Unit]
 Description=Xray Service
-Documentation=https://github.com/xtls https://hijk.art
+Documentation=https://github.com/xtls https://www.kehu33.asia
 After=network.target nss-lookup.target
 
 [Service]
@@ -1778,9 +1778,7 @@ menu() {
     echo -e "  ${GREEN}9.${PLAIN}   安装${BLUE}trojan${PLAIN}${RED}(推荐)${PLAIN}"
     echo -e "  ${GREEN}10.${PLAIN}  安装${BLUE}trojan+XTLS${PLAIN}${RED}(推荐)${PLAIN}"
     echo " -------------"
-    echo -e "  ${GREEN}11.${PLAIN}  更新Xray"
     echo -e "  ${GREEN}12.  ${RED}卸载Xray${PLAIN}"
-    echo " -------------"
     echo -e "  ${GREEN}13.${PLAIN}  启动Xray"
     echo -e "  ${GREEN}14.${PLAIN}  重启Xray"
     echo -e "  ${GREEN}15.${PLAIN}  停止Xray"
