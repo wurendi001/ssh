@@ -341,7 +341,8 @@ getData() {
         colorEcho $BLUE " 请选择流控模式:" 
         echo -e "   1) xtls-rprx-direct [$RED推荐$PLAIN]"
         echo "   2) xtls-rprx-origin"
-        read -p "  请选择流控模式[默认:direct]" answer
+        echo "  3) xtls-rprx-vision"
+	read -p "  请选择流控模式[默认:direct]" answer
         [[ -z "$answer" ]] && answer=1
         case $answer in
             1)
@@ -350,7 +351,10 @@ getData() {
             2)
                 FLOW="xtls-rprx-origin"
                 ;;
-            *)
+            3)
+                FLOW="xtls-rprx-vision"
+                ;;
+	    *)
                 colorEcho $RED " 无效选项，使用默认的xtls-rprx-direct"
                 FLOW="xtls-rprx-direct"
                 ;;
@@ -385,9 +389,9 @@ getData() {
         echo "   1) 静态网站（小白不见意用）(位于/usr/share/nginx/html)"
         echo "   2) 小说站(随机选择)"
         echo "   3) 自定义反代站点(需以http或者https开头)自己找网站"
-        read -p "  请选择伪装网站类型[默认失效了:高清壁纸站]" answer
+        read -p "  请选择伪装网站类型[默认:高清壁纸站]" answer
         if [[ -z "$answer" ]]; then
-            PROXY_URL="https://bing.imeizi.me"
+            PROXY_URL="https://wallhaven.cc"
         else
             case $answer in
             1)
