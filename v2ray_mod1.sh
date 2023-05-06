@@ -147,10 +147,10 @@ normalizeVersion() {
     if [ -n "$1" ]; then
         case "$1" in
             v*)
-                echo "v5.2.1"
+                echo "v5.3.0"
             ;;
             *)
-                echo "v5.2.1"
+                echo "v5.3.0"
             ;;
         esac
     else
@@ -166,7 +166,7 @@ getVersion() {
     TAG_URL="${V6_PROXY}https://api.github.com/repos/v2fly/v2ray-core/releases/latest"
     NEW_VER="$(normalizeVersion "$(curl -s "${TAG_URL}" --connect-timeout 10| tr ',' '\n' | grep 'tag_name' | cut -d\" -f4)")"
     if [[ $NEW_VER = "" ]]; then
-        NEW_VER=v5.2.1
+        NEW_VER=v5.3.0
     fi
 
     if [[ $? -ne 0 ]] || [[ $NEW_VER == "" ]]; then
