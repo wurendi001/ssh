@@ -1762,19 +1762,14 @@ showLog() {
 menu() {
     clear
     echo "#############################################################"
-    echo -e "#                     ${RED}Xray一键安装脚本${PLAIN}                      
-#"
-	echo -e "# 作者: 失落的梦                          
-#"
-	echo -e "# 导航站:https://www.meng666.buzz 
-#"
-	echo -e "# 博客:https://www.kehu33.asia
-#"
-	echo -e "# 微信: Falltoher-1314
-#"
-	echo -e "#  QQ: 1150315739 
-#"
-    echo "######################################################################"
+    echo -e "#                     ${RED}Xray一键安装脚本${PLAIN}               "
+        echo -e "# 作者: 失落的梦                          "
+	echo -e "# tiktok电商专用【sldm云服务器】购买网址：https://www.666uu66.asia "
+	echo -e "# 导航站:https://www.meng666.buzz "
+	echo -e "# 博客:https://www.kehu33.asia"
+	echo -e "# 微信: Falltoher-1314 "
+	echo -e "#  QQ: 1150315739     "
+	echo "######################################################################"
     echo -e "  ${GREEN}1.${PLAIN}   安装Xray-VMESS"
     echo -e "  ${GREEN}2.${PLAIN}   安装Xray-${BLUE}VMESS+mKCP${PLAIN}"
     echo -e "  ${GREEN}3.${PLAIN}   安装Xray-VMESS+TCP+TLS"
